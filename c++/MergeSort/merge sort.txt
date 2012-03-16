@@ -1,0 +1,222 @@
+void dumparray( int *ary, int len )
+{
+    int i;
+    for( i=0; i<len-1; i++ )
+    {
+        cout << ary[i] << ",";
+    }
+    cout << ary[i] << endl;
+}
+
+void split( int *inarray, int size, 
+            int *outarray1, int *outsize1,
+            int *outarray2, int *outsize2 )
+{
+    int numSubFiles = 0;
+
+    int in = 0;
+    *outsize1 = 0;
+    *outsize2 = 0;
+
+    int curr;
+    int next = inarray[in++];
+
+    while( in <= size )
+    {
+        // find a pre-sorted sub-file
+        do
+        {
+           curr = next;
+
+           if( in < size )
+           {
+               next = inarray[in];
+           }
+           in++;
+
+           if( numSubFiles % 2 == 0 )
+           {
+               // move into first temp file
+               outarray1[(*outsize1)++] = curr;
+           }
+           else
+           {
+               // move into second temp file
+               outarray2[(*outsize2)++] = curr;
+           }
+        }
+        while( (curr < next) && (in <= size) );
+
+        numSubFiles++;
+    }
+}
+
+int merge( int *outarray, int *outsize,
+           int *inarray1, int insize1,
+           int *inarray2, int insize2 )
+{
+    int subFiles = 0;
+
+    int in1 = 0;
+    int in2 = 0;
+    *outsize = 0;
+
+    int curr1;
+    int curr2;
+
+    int prev1;
+    int prev2;
+
+    // get first elements from each temp file
+    curr1 = inarray1[in1++];
+    curr2 = inarray2[in2++];
+
+    // loop until we have hit the end of one of the temp files
+    while( in1 <= insize1 && in2 <= insize2 )
+    {
+        bool endOfSub1 = false;
+        bool endOfSub2 = false;
+
+        // find subfile
+        while( !endOfSub1 && !endOfSub2 )
+        {
+            if( curr1 < curr2 )
+            {
+                // temp file 1 element comes first
+                outarray[(*outsize)++] = curr1;
+                prev1 = curr1;
+                if( in1 < insize1 )
+                {
+                    curr1 = inarray1[in1];
+                }
+                in1++;
+
+                // was the end of a sub-file hit?
+                if( (in1 > insize1) || (prev1 > curr1) )
+                {
+                    endOfSub1 = true;
+                }
+            }
+
+            if( curr2 < curr1 )
+            {
+                // temp file 2 element comes first
+                outarray[(*outsize)++] = curr2;
+                prev2 = curr2;
+                if( in2 < insize2 )
+                {
+                    curr2 = inarray2[in2];
+                }
+                in2++;
+
+                // was the end of a sub-file hit?
+                if( (in2 > insize2) || (prev2 > curr2) )
+                {
+                    endOfSub2 = true;
+                }
+            }
+        }
+
+        // dump remaining elements in temp 1 that exist in the sub-file
+        while( !endOfSub1 )
+        {
+            outarray[(*outsize)++] = curr1;
+            prev1 = curr1;
+            if( in1 < insize1 )
+            {
+                curr1 = inarray1[in1];
+            }
+            in1++;
+
+            if( (in1 > insize1) || (prev1 > curr1) )
+            {
+                endOfSub1 = true;
+            }
+        }
+
+        // dump remaining elements in temp 2 that exist in the sub-file
+        while( !endOfSub2 )
+        {
+            outarray[(*outsize)++] = curr2;
+            prev2 = curr2;
+            if( in2 < insize2 )
+            {
+                curr2 = inarray2[in2];
+            }
+            in2++;
+
+            if( (in2 > insize2) || (prev2 > curr2) )
+            {
+                endOfSub2 = true;
+            }
+        }
+    }
+
+
+    // dump remaining elements from temp 1 into merged array
+    while( in1 <= insize1 )
+    {
+        outarray[(*outsize)++] = curr1;
+        prev1 = curr1;
+        if( in1 < insize1 )
+        {
+            curr1 = inarray1[in1];
+        }
+        in1++;
+
+        // keep track of any sub-files in remaining elements
+        if( (in1 > insize1) || (prev1 > curr1) )
+        {
+            subFiles++;
+        }
+    }
+
+    // dump remaining elements from temp 2 into merged array
+    while( in2 <= insize2 )
+    {
+        outarray[(*outsize)++] = curr2;
+        prev2 = curr2;
+        if( in2 < insize2 )
+        {
+            curr2 = inarray2[in2];
+        }
+        in2++;
+
+        // keep track of any sub-files in remaining elements
+        if( (in2 > insize2) || (prev2 > curr2) )
+        {
+            subFiles++;
+        }
+    }
+
+    return subFiles;
+}
+
+void mergesort( int *ary, int len )
+{
+    int subFiles = 0;
+    int *temp1 = new int[len];
+    int *temp2 = new int[len];
+    int tempsize1;
+    int tempsize2;
+
+    do
+    {
+        split( ary, len, temp1, &tempsize1, temp2, &tempsize2 );
+
+        cout << "Split" << endl;
+        cout << "temp1: ";
+        dumparray( temp1, tempsize1 );
+        cout << "temp2: ";
+        dumparray( temp2, tempsize2 );
+
+        subFiles = merge( ary, &len, temp1, tempsize1, temp2, tempsize2 );
+
+        cout << "Merge" << endl;
+        dumparray( ary, len );
+    }
+    while( subFiles != 1 );
+
+    delete [] temp1;
+    delete [] temp2;
+}

@@ -1,0 +1,21 @@
+W0203043	Smith	James	R	123 street Rd.	Halifax	NS	J3J 3L2	444-3333	M	32	3	office	N	23.22
+W1237654	Darcy	Rick	W	143 Adobe St.	Jamestown	NS	K1K 2J4	323-4324	M	53	12	warehouse	Y	42.26
+W2032033	Taylor	Tina	T	1 Crystal Palace St.	Moncton	NB	D3E 1K0	644-2533	F	24	2	accounts	Y	27.64
+W1203943	Edwin	Yorick	C	22 Shakespeare Way	Ottawa	ON	O2K 2K2	654-2113	M	15	0	sales	N	13.12
+W9384928	Wambolt	Helen	D	53 Wickers Ave.	Victoria	BC	L3S 6D3	665-7532	F	64	8	office	N	53.26
+W2837273	Strickland	William	R	325 Canuck Ave.	Thunder Bay	ON	D4G 3D2	235-3264	M	17	0	sales	N	15.38
+W3232456	Zinck	Debra	H	93 Maple St.	Winnipeg	MA	U0P 5F6	688-7234	F	37	4	office	Y	34.39
+W4343432	Harris	Greg	A	2 Plains Blvd.	Regina	SK	Q4X 7S3	126-3324	M	42	3	warehouse	Y	34.86
+W8646343	Nimrod	Bill	D	15 Mets St.	Quebec City	QC	K9I 0P0	942-7784	M	56	10	warehouse	Y	53.53
+W7674565	Samson	Wayne	D	982 Moncton Ave.	Moncton	NB	J9P 0K2	734-0817	M	14	0	sales	N	3.26
+W1356332	Minck	Eddie	S	80 Citadel Rd.	Halifax	NS	M0M 2D2	123-0004	M	21	2	warehouse	N	18.00
+W0875465	Planck	Tracy	C	10 Snowy Way	Yellowknife	YK	N8V 5H6	805-2635	F	45	2	office	Y	62.79
+W4654535	Einstein	John	X	556 Martock Dr.	Kentville	NS	J2K 2K4	123-4332	M	32	5	sales	Y	12.35
+W3257432	Brooks	Quinn	B	124 Rocky Mtn Rd.	Whistler	BC	Z1E N9L	324-2232	F	24	1	office	N	33.27
+W7655345	Andrews	Danny	F	453 Xavier Ave.	Calgary	AB	A2N M1N	523-7132	M	65	23	warehouse	Y	82.16
+W6563434	Lodge	Tim	T	1243 Jenners Dr.	Vancouver	BC	O2N 1N5	335-4332	M	32	6	office	N	33.87
+W5565322	Forsythe	Erwin	R	299 Minestonna Cres.	Red Knife	SK	J1K 1M2	125-2332	M	62	11	warehouse	Y	51.11
+W5753211	Jasper	Stacy	Y	122 Mine Ave.	Enoch	NB	K1N 0N2	615-7643	F	84	2	sales	N	93.86
+W6382773	Cunningham	Veronica	G	72 Expo Dr.	Victoria	BC	J8K 2J3	126-2342	F	14	0	warehouse	N	12.36
+W2467323	Worthton	Alex	S	32 Halifax Ave.	Halifax	NS	H0P 9I9	143-3245	F	24	1	sales	Y	45.23
+W5323534	Alamo	Irwin	B	64323 Pownal St.	Charlottetown	PEI	K0O 2P3	928-2362	M	23	2	office	Y	36.43
